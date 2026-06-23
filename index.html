@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Alpha Solutions Hub Assessment Result Portal</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+background:#f4f7fc;
+}
+
+header{
+background:#003366;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+header h1{
+font-size:36px;
+}
+
+header p{
+margin-top:10px;
+font-size:18px;
+}
+
+.container{
+width:90%;
+max-width:450px;
+background:white;
+margin:50px auto;
+padding:30px;
+border-radius:10px;
+box-shadow:0px 0px 15px rgba(0,0,0,0.2);
+}
+
+.container h2{
+text-align:center;
+margin-bottom:20px;
+color:#003366;
+}
+
+input{
+width:100%;
+padding:12px;
+margin-top:15px;
+border:1px solid #ccc;
+border-radius:5px;
+font-size:16px;
+}
+
+button{
+width:100%;
+padding:12px;
+margin-top:20px;
+background:#0066cc;
+color:white;
+font-size:18px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#004c99;
+}
+
+#message{
+margin-top:15px;
+text-align:center;
+font-weight:bold;
+color:red;
+}
+
+#resultPage{
+display:none;
+}
+
+table{
+width:100%;
+margin-top:20px;
+border-collapse:collapse;
+}
+
+table td{
+padding:10px;
+border:1px solid #ddd;
+}
+
+.logout{
+background:red;
+margin-top:20px;
+}
+
+footer{
+background:#003366;
+color:white;
+text-align:center;
+padding:15px;
+margin-top:60px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>ALPHA SOLUTIONS HUB</h1>
+
+<p>Assessment Result Portal</p>
+
+</header>
+
+<div class="container">
+
+<div id="loginPage">
+
+<h2>Student Login</h2>
+
+<input type="text" id="username" placeholder="Student ID">
+
+<input type="password" id="password" placeholder="Password">
+
+<button onclick="login()">View Result</button>
+
+<p id="message"></p>
+
+</div>
+
+<div id="resultPage">
+
+<h2>Assessment Result</h2>
+
+<table>
+
+<tr>
+
+<td><b>Name</b></td>
+
+<td id="name"></td>
+
+</tr>
+
+<tr>
+
+<td><b>Course</b></td>
+
+<td id="course"></td>
+
+</tr>
+
+<tr>
+
+<td><b>Assessment</b></td>
+
+<td id="assessment"></td>
+
+</tr>
+
+<tr>
+
+<td><b>Score</b></td>
+
+<td id="score"></td>
+
+</tr>
+
+<tr>
+
+<td><b>Grade</b></td>
+
+<td id="grade"></td>
+
+</tr>
+
+<tr>
+
+<td><b>Remark</b></td>
+
+<td id="remark"></td>
+
+</tr>
+
+</table>
+
+<button class="logout" onclick="logout()">Logout</button>
+
+</div>
+
+</div>
+
+<footer>
+
+© 2026 Alpha Solutions Hub | Assessment Result Portal
+
+</footer>
+
+<script>
+
+const students={
+
+"ASH001":{
+
+password:"1234",
+
+name:"Aaron",
+
+course:"Graphics Design",
+
+assessment:"Logo Design",
+
+score:95,
+
+grade:"A",
+
+remark:"Excellent Performance"
+
+},
+
+"ASH002":{
+
+password:"5678",
+
+name:"Felicia",
+
+course:"Scratch Programming",
+
+assessment:"Animation Project",
+
+score:88,
+
+grade:"B+",
+
+remark:"Very Good"
+
+},
+
+"ASH003":{
+
+password:"1111",
+
+name:"Regina",
+
+course:"Robotics",
+
+assessment:"Robot Challenge",
+
+score:91,
+
+grade:"A",
+
+remark:"Outstanding"
+
+}
+
+};
+
+function login(){
+
+let username=document.getElementById("username").value;
+
+let password=document.getElementById("password").value;
+
+if(students[username] && students[username].password===password){
+
+document.getElementById("loginPage").style.display="none";
+
+document.getElementById("resultPage").style.display="block";
+
+document.getElementById("name").innerHTML=students[username].name;
+
+document.getElementById("course").innerHTML=students[username].course;
+
+document.getElementById("assessment").innerHTML=students[username].assessment;
+
+document.getElementById("score").innerHTML=students[username].score;
+
+document.getElementById("grade").innerHTML=students[username].grade;
+
+document.getElementById("remark").innerHTML=students[username].remark;
+
+}
+
+else{
+
+document.getElementById("message").innerHTML="Invalid Student ID or Password";
+
+}
+
+}
+
+function logout(){
+
+location.reload();
+
+}
+
+</script>
+
+</body>
+
+</html>
